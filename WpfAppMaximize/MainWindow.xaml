@@ -1,0 +1,87 @@
+﻿<Window
+    x:Class="WpfAppMaximize.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WpfAppMaximize"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    AllowsTransparency="True"
+    ResizeMode="CanResize"
+    StateChanged="Window_StateChanged"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
+    mc:Ignorable="d">
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="0" ResizeBorderThickness="5" />
+    </WindowChrome.WindowChrome>
+
+    <Border BorderBrush="Blue" BorderThickness="2">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid
+                x:Name="GridTitleBar"
+                Background="Black"
+                PreviewMouseLeftButtonDown="GridTitleBar_PreviewMouseLeftButtonDown"
+                PreviewMouseMove="GridTitleBar_PreviewMouseMove">
+                <StackPanel
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+                    <TextBlock
+                        x:Name="TextBlockTitle"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        FontWeight="Bold" />
+                </StackPanel>
+                <StackPanel
+                    x:Name="Header"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+                    <Button
+                        x:Name="ButtonMinimize"
+                        Width="30"
+                        Content="_"
+                        PreviewMouseLeftButtonDown="ButtonMinimize_PreviewMouseLeftButtonDown"
+                        ToolTip="Minimize"
+                        WindowChrome.IsHitTestVisibleInChrome="True" />
+                    <Button
+                        x:Name="ButtonRestore"
+                        Width="30"
+                        Content="▯"
+                        PreviewMouseLeftButtonDown="ButtonRestore_PreviewMouseLeftButtonDown"
+                        ToolTip="Restore"
+                        Visibility="Collapsed"
+                        WindowChrome.IsHitTestVisibleInChrome="True" />
+                    <Button
+                        x:Name="ButtonMaximize"
+                        Width="30"
+                        Content="🗖"
+                        PreviewMouseLeftButtonDown="ButtonMaximize_PreviewMouseLeftButtonDown"
+                        ToolTip="Maximize"
+                        Visibility="Visible"
+                        WindowChrome.IsHitTestVisibleInChrome="True" />
+                    <Button
+                        x:Name="ButtonClose"
+                        Width="30"
+                        Content="X"
+                        PreviewMouseLeftButtonDown="ButtonClose_PreviewMouseLeftButtonDown"
+                        ToolTip="Close"
+                        WindowChrome.IsHitTestVisibleInChrome="True" />
+                </StackPanel>
+            </Grid>
+            <UserControl
+                x:Name="UserControlContent"
+                Grid.Row="1"
+                Background="Gray" />
+        </Grid>
+    </Border>
+</Window>
